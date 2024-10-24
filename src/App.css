@@ -166,34 +166,28 @@ button {
 /* Стили стрелок */
 .swiper-button-prev,
 .swiper-button-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-60%);
   background-color: #ffffff;
   border-radius: 50%;
-  width: 44px;
-  height: 44px;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  width: 44px !important;
+  height: 44px !important;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
 .swiper-button-prev {
   z-index: 100;
   left: 0;
-  margin-left: 3px;
 }
 
 .swiper-button-next {
   right: 0; /* Расположение стрелки справа */
-  margin-right: 3px;
 }
 
 .swiper-button-prev::after,
 .swiper-button-next::after {
-  font-size: 24px;
+  font-size: 24px !important;
   color: #f7b1bb;
 }
 .section__top-slogan {
@@ -885,10 +879,12 @@ textarea.form__input {
   top: 3px;
 }
 /*work*/
-
+.job__inner {
+  max-width: 1000px;
+}
 .job__box {
   border-radius: 10px;
-  width: 1000px;
+  max-width: 1000px;
   height: 250px;
   background: #f7b1bb;
 
@@ -1273,6 +1269,15 @@ textarea.form__input {
     padding-left: 0px;
     padding-right: 0px;
   }
+  .header__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .logo_text {
+    font-size: 20px;
+  }
   /*1 blok*/
   .top {
     margin: 0 auto;
@@ -1492,9 +1497,7 @@ textarea.form__input {
     margin: 0 auto;
     padding-right: 300px;
   }
-  .logo_text {
-    font-size: 15px;
-  }
+
   /*1 blok*/
 
   .slider_border {
@@ -1509,8 +1512,12 @@ textarea.form__input {
   .swiper-button-prev,
   .swiper-button-next {
     top: 60%;
-    width: 30px;
-    height: 30px;
+    width: 30px !important;
+    height: 30px !important;
+  }
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 18px !important;
   }
   /* Контейнер слайдера */
   .image-slider {

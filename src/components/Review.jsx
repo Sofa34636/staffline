@@ -8,15 +8,7 @@ import { useState } from 'react';
 
 function Review() {
   const [selectedService, setSelectedService] = useState('');
-  const [formSending, setFormSending] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    message: '',
-    rating: '',
-  });
 
-  // Дропдаун функционал
   useEffect(() => {
     const dropDownBtns = document.querySelectorAll('.dropdown__button');
     const dropDownLists = document.querySelectorAll('.dropdown__list');
@@ -50,52 +42,6 @@ function Review() {
       dropDownItems.forEach((item) => item.removeEventListener('click', () => {}));
     };
   }, []);
-
-  // Отправка формы
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    let error = formValidate(form);
-
-    if (error === 0) {
-      setFormSending(true);
-      const formData = new FormData(form);
-
-      try {
-        let response = await fetch('sendmail.php', {
-          method: 'POST',
-          body: formData,
-        });
-        if (response.ok) {
-          let result = await response.json();
-          alert(result.message);
-          form.reset();
-        } else {
-          alert('Ошибка при отправке');
-        }
-      } catch (err) {
-        alert('Произошла ошибка при отправке');
-      } finally {
-        setFormSending(false);
-      }
-    } else {
-      alert('Заполните обязательные поля');
-    }
-  };
-
-  const formValidate = (form) => {
-    let error = 0;
-    const requiredFields = form.querySelectorAll('._req');
-    requiredFields.forEach((input) => {
-      if (input.value === '') {
-        error++;
-        input.classList.add('_error');
-      } else {
-        input.classList.remove('_error');
-      }
-    });
-    return error;
-  };
 
   return (
     <section className='review'>
@@ -176,7 +122,9 @@ function Review() {
             <div className='review_text'>Есть замечания?</div>
           </div>
           <div className='form'>
-            <form className='form__body' id='form' onSubmit={handleFormSubmit}>
+            <form className='form__body' action='https://api.web3forms.com/submit' method='POST'>
+              <input type='hidden' name='access_key' value='cc51d755-2849-4c62-ba86-62a9cdf0cfbe' />
+
               <h1 className='form__title'>Оставьте отзыв</h1>
               <div className='review_contact'>
                 <div className='form__item'>
@@ -222,7 +170,7 @@ function Review() {
                 <textarea name='message' className='form__input' placeholder='Ваш отзыв'></textarea>
               </div>
               <button type='submit' className='form__button'>
-                {formSending ? 'Отправка...' : 'Отправить'}
+                Отправить
               </button>
             </form>
           </div>
