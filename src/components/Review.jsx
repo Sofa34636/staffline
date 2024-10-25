@@ -1,13 +1,73 @@
-import React, { useEffect } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination'; // Если используете пагинацию
-import { Autoplay } from 'swiper/modules';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import Feedback from './Feedback';
 
 function Review() {
   const [selectedService, setSelectedService] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    message: '',
+    rating: '', // Добавлено для хранения выбранного рейтинга
+  });
+  const [result, setResult] = useState(''); // Стейт для отображения результата
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+
+    // Проверка на обязательные поля
+    if (!formData.name.trim()) {
+      alert('Пожалуйста, введите ваше имя');
+      return;
+    }
+    if (!formData.phone.trim()) {
+      alert('Пожалуйста, введите ваш телефон');
+      return;
+    }
+
+    setResult('Пожалуйста, подождите...'); // Сообщение о процессе отправки
+
+    // Отправка данных формы через fetch
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        access_key: 'cc51d755-2849-4c62-ba86-62a9cdf0cfbe',
+        ...formData,
+        service: selectedService,
+      }),
+    })
+      .then(async (response) => {
+        const json = await response.json();
+        if (response.status === 200) {
+          setResult('Ваше сообщение успешно отправлено!'); // Успешное сообщение
+        } else {
+          setResult('Произошла ошибка, попробуйте снова.'); // Сообщение об ошибке
+        }
+      })
+      .catch(() => {
+        setResult('Что-то пошло не так! Пожалуйста, попробуйте снова.');
+      })
+      .finally(() => {
+        setTimeout(() => setResult(''), 5000); // Очистка сообщения через 5 секунд
+      });
+  };
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleRatingChange = (e) => {
+    setFormData({
+      ...formData,
+      rating: e.target.value, // Устанавливаем выбранный рейтинг
+    });
+  };
 
   useEffect(() => {
     const dropDownBtns = document.querySelectorAll('.dropdown__button');
@@ -26,7 +86,7 @@ function Review() {
         e.stopPropagation();
         const dropdown = item.closest('.dropdown');
         dropdown.querySelector('.dropdown__button').innerText = this.innerText;
-        setSelectedService(this.dataset.value); // Сохраняем значение выбора
+        setSelectedService(this.dataset.value);
         dropdown.querySelector('.dropdown__list').classList.remove('dropdown__list--visible');
       });
     });
@@ -45,76 +105,7 @@ function Review() {
 
   return (
     <section className='review'>
-      <div className='image-slider_text swiper-container2'>
-        <Swiper
-          autoplay={{
-            delay: 20,
-            disableOnInteraction: false,
-          }}
-          effect='slide'
-          speed={3000}
-          breakpoints={{
-            900: {
-              slidesPerView: 2, // Для больших экранов
-              loop: true, // Включение бесконечной прокрутки
-
-              spaceBetween: 30, // Расстояние между слайдами
-              lazyLoading: true, // Ленивое (отложенное) загружаемое изображение
-              centeredSlides: true,
-            },
-            600: {
-              slidesPerView: 1.5, // Для средних экранов
-              loop: true, // Включение бесконечной прокрутки
-
-              spaceBetween: 20, // Расстояние между слайдами
-              lazyLoading: true, // Ленивое (отложенное) загружаемое изображение
-              centeredSlides: true,
-            },
-            0: {
-              slidesPerView: 1.2, // Для мобильных экранов
-              loop: true, // Включение бесконечной прокрутки
-
-              spaceBetween: 10, // Расстояние между слайдами
-              lazyLoading: true, // Ленивое (отложенное) загружаемое изображение
-              centeredSlides: true,
-            },
-          }}
-          modules={[Autoplay]}
-        >
-          <div class='swiper-wrapper'>
-            {/* Слайды с отзывами */}
-            <SwiperSlide>
-              <div className='text-slider__slide'>
-                <div className='slider__text-name'>Имя 1</div>
-                <div className='slider__text-koment'>Комментарий 1: Отличная работа!</div>
-                <div className='slider__text-star'>★★★★★</div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className='text-slider__slide'>
-                <div className='slider__text-name'>Имя 2</div>
-                <div className='slider__text-koment'>Комментарий 2: Очень доволен услугами!</div>
-                <div className='slider__text-star'>★★★★☆</div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className='text-slider__slide'>
-                <div className='slider__text-name'>Имя 3</div>
-                <div className='slider__text-koment'>Комментарий 3: Рекомендую всем!</div>
-                <div className='slider__text-star'>★★★★★</div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className='text-slider__slide'>
-                <div className='slider__text-name'>Имя 4</div>
-                <div className='slider__text-koment'>Комментарий 4: Отличный сервис!</div>
-                <div className='slider__text-star'>★★★☆☆</div>
-              </div>
-            </SwiperSlide>
-          </div>
-        </Swiper>
-      </div>
-
+      <Feedback />
       <div className='container review__inner'>
         <div className='review__content_bloc'>
           <div className='review_text-container'>
@@ -122,7 +113,7 @@ function Review() {
             <div className='review_text'>Есть замечания?</div>
           </div>
           <div className='form'>
-            <form className='form__body' action='https://api.web3forms.com/submit' method='POST'>
+            <form className='form__body' onSubmit={handleFormSubmit}>
               <input type='hidden' name='access_key' value='cc51d755-2849-4c62-ba86-62a9cdf0cfbe' />
 
               <h1 className='form__title'>Оставьте отзыв</h1>
@@ -133,6 +124,8 @@ function Review() {
                     name='name'
                     className='form__input _req'
                     placeholder='Ваше имя'
+                    value={formData.name}
+                    onChange={handleInputChange}
                   />
                 </div>
                 <div className='form__item'>
@@ -141,6 +134,8 @@ function Review() {
                     name='phone'
                     className='form__input _req'
                     placeholder='Ваш телефон'
+                    value={formData.phone}
+                    onChange={handleInputChange}
                   />
                 </div>
               </div>
@@ -167,11 +162,67 @@ function Review() {
                 </div>
               </div>
               <div className='form__item'>
-                <textarea name='message' className='form__input' placeholder='Ваш отзыв'></textarea>
+                <textarea
+                  name='message'
+                  className='form__input'
+                  placeholder='Ваш отзыв'
+                  value={formData.message}
+                  onChange={handleInputChange}
+                ></textarea>
+              </div>
+              <div className='simple-rating'>
+                <div className='simple-rating__items'>
+                  <input
+                    id='simple-rating__5'
+                    type='radio'
+                    className='simple-rating__item'
+                    name='simple-rating'
+                    value='5'
+                    onChange={handleRatingChange} // Добавлен обработчик для рейтинга
+                  />
+                  <label htmlFor='simple-rating__5' className='simple-rating__lable'></label>
+                  <input
+                    id='simple-rating__4'
+                    type='radio'
+                    className='simple-rating__item'
+                    name='simple-rating'
+                    value='4'
+                    onChange={handleRatingChange}
+                  />
+                  <label htmlFor='simple-rating__4' className='simple-rating__lable'></label>
+                  <input
+                    id='simple-rating__3'
+                    type='radio'
+                    className='simple-rating__item'
+                    name='simple-rating'
+                    value='3'
+                    onChange={handleRatingChange}
+                  />
+                  <label htmlFor='simple-rating__3' className='simple-rating__lable'></label>
+                  <input
+                    id='simple-rating__2'
+                    type='radio'
+                    className='simple-rating__item'
+                    name='simple-rating'
+                    value='2'
+                    onChange={handleRatingChange}
+                  />
+                  <label htmlFor='simple-rating__2' className='simple-rating__lable'></label>
+                  <input
+                    id='simple-rating__1'
+                    type='radio'
+                    className='simple-rating__item'
+                    name='simple-rating'
+                    value='1'
+                    onChange={handleRatingChange}
+                  />
+                  <label htmlFor='simple-rating__1' className='simple-rating__lable'></label>
+                </div>
               </div>
               <button type='submit' className='form__button'>
                 Отправить
               </button>
+              {result && <p className='form__result'>{result}</p>}
             </form>
           </div>
         </div>

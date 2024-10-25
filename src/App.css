@@ -661,6 +661,7 @@ img {
   width: 262px;
   height: 39px;
   transition: all 0.5s ease 0s;
+  padding: 10px 16px;
 }
 .form__input:focus {
   box-shadow: 0 0 15px #fcc0c0;
@@ -672,7 +673,6 @@ textarea.form__input {
   width: 100%;
   min-height: 157px;
   resize: none; /*можно изменять только по мертикале*/
-  padding: 10px 16px;
 }
 .select {
   width: 100%;
@@ -878,9 +878,13 @@ textarea.form__input {
   /*При нажатии двигается немного вниз*/
   top: 3px;
 }
+
 /*work*/
 .job__inner {
   max-width: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .job__box {
   border-radius: 10px;
@@ -892,7 +896,8 @@ textarea.form__input {
   font-size: 16px;
   line-height: 125%;
   letter-spacing: -0.01em;
-  margin-top: 50px;
+  margin-top: 25px;
+  margin-bottom: 25px;
   padding-top: 2%;
 }
 .job__container {
@@ -913,7 +918,7 @@ textarea.form__input {
   max-width: 326px;
 }
 .job_title,
-.schedule,
+.city,
 .job_pay {
   font-weight: 700;
   font-size: 20px;
@@ -922,12 +927,17 @@ textarea.form__input {
 .pay {
   margin-bottom: 20%;
 }
+.none_vacancies {
+  text-align: center;
+  margin-bottom: 380px;
+}
 
 /*form2*/
 .form2 {
+  display: flex;
+  justify-content: space-between;
 }
 .search_form {
-  margin: 0 auto;
   border: 1px solid #ff84b0;
   border-radius: 20px;
   background: #fff;
@@ -935,7 +945,9 @@ textarea.form__input {
   height: 45px;
   display: flex;
   justify-content: space-between;
-  padding: 0 21px 0 21px;
+  padding: 1px 21px 0 21px;
+  font-size: 30px;
+  margin-top: 15px;
 }
 
 .search__input {
@@ -944,13 +956,40 @@ textarea.form__input {
   width: 300px;
   height: 40px;
   background: #fff;
+  font-size: 20px;
 }
+.town {
+  font-size: 16px;
+}
+/* Стили для выпадающего списка */
+select {
+  background-color: white; /* Белый фон */
+  color: black; /* Черный текст */
+  border: none; /* Убираем обводку */
+  border-radius: 4px; /* Добавляем немного округления углов */
+  padding: 10px; /* Отступы для улучшения внешнего вида */
+  font-size: 16px; /* Размер шрифта */
+  outline: none; /* Убираем обвод при фокусировке */
+}
+
+/* Стили при наведении */
+select:hover {
+  background-color: #fad3d3; /* Светло-серый фон при наведении */
+}
+
+/* Стили при фокусировке */
+select:focus {
+  background-color: white; /* Белый фон при фокусировке */
+  box-shadow: none; /* Убираем тень при фокусировке */
+}
+
 .search__input:focus {
   outline: none;
 }
 .searct__img {
   width: 30px;
 }
+
 /*footer*/
 
 .footer {
@@ -1140,8 +1179,26 @@ textarea.form__input {
     padding-left: 250px;
     align-items: center;
   }
+  /*work*/
+  .job__inner {
+    max-width: 1000px;
+  }
+  .job__box {
+    max-width: 830px;
+    font-size: 14px;
+  }
+  .job__container {
+    width: 830px;
+    padding: 18px 34px;
+  }
+
+  .job_title,
+  .city,
+  .job_pay {
+    font-size: 18px;
+  }
 }
-@media (max-width: 910px) {
+@media (max-width: 920px) {
   .header__inner {
     margin-right: 5px;
     margin-left: 5px;
@@ -1153,6 +1210,9 @@ textarea.form__input {
     padding-left: 5px;
   }
   .tab__container_3 {
+    padding-left: 5px;
+  }
+  .tab__container_4 {
     padding-left: 5px;
   }
   .products__content {
@@ -1262,6 +1322,37 @@ textarea.form__input {
   .base_blog-img {
     width: 140px;
     height: 100%;
+  }
+  /*work*/
+
+  .job__box {
+    max-width: 400px;
+    height: 400px;
+  }
+  .job__container {
+    width: 400px;
+    height: 360px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .job_grup {
+    gap: 10px;
+  }
+  /*form2*/
+
+  .search_form {
+    width: 380px;
+  }
+
+  .search__input {
+    width: 290px;
+    font-size: 18px;
+  }
+  .search__img {
+    width: 30px;
+  }
+  .none_vacancies {
+    margin-bottom: 200px;
   }
 }
 @media (max-width: 600px) {
@@ -1468,6 +1559,8 @@ textarea.form__input {
   }
   .form__input {
     width: 100%;
+
+    padding: 5px 10px;
   }
   .review_contact {
     flex-direction: column;
@@ -1480,7 +1573,6 @@ textarea.form__input {
   }
   textarea.form__input {
     min-height: 157px;
-    padding: 5px 10px;
   }
   .dropdown {
     font-size: 14px;
@@ -1489,6 +1581,59 @@ textarea.form__input {
   .simple-rating {
     margin: 10px;
     font-size: 30px;
+  }
+  /*work*/
+
+  .job__box {
+    max-width: 290px;
+    height: 385px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-top: 2%;
+  }
+  .job__container {
+    width: 300px;
+    height: 360px;
+    flex-direction: column;
+    padding: 18px 34px;
+    margin-left: 15px;
+    gap: 10px;
+  }
+  .job_grup {
+    gap: 10px;
+    max-width: 326px;
+  }
+  .job_title,
+  .city,
+  .job_pay {
+    font-size: 18px;
+  }
+  .pay {
+    margin-bottom: 20%;
+  }
+  /*form2*/
+  .form2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .search_form {
+    width: 270px;
+    height: 45px;
+    padding: 1px 21px 0 21px;
+  }
+
+  .search__input {
+    width: 210px;
+    height: 40px;
+    font-size: 16px;
+  }
+  .search__img {
+    width: 30px;
+  }
+  .none_vacancies {
+    margin-bottom: 20px;
   }
 }
 
@@ -1669,7 +1814,6 @@ textarea.form__input {
   }
   textarea.form__input {
     min-height: 157px;
-    padding: 5px 10px;
   }
   .dropdown {
     font-size: 14px;

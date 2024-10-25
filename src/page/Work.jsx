@@ -4,6 +4,7 @@ function Work({
   job_title,
   company_name,
   derectionz_dutie,
+  city,
   address,
   schedule,
   responsibilities,
@@ -21,8 +22,13 @@ function Work({
               <div class='address'>{address}</div>
             </div>
             <div class='job_grup'>
+              <div class='city'>{city}</div>
               <div class='schedule'>{schedule}</div>
-              <div class='responsibilities'>{responsibilities}</div>
+              <div class='responsibilities'>
+                <span
+                  dangerouslySetInnerHTML={{ __html: responsibilities.replace(/\r\n/g, '<br />') }}
+                />
+              </div>
             </div>
             <div class='job_grup'>
               <div class='job_pay'>Заработная плата</div>
