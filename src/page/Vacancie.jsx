@@ -4,16 +4,16 @@ import pizzas from '../assets/vacancie.json';
 import React, { useEffect, useState } from 'react';
 
 function Vacancies() {
-  const [value, setValue] = useState(''); // Для поиска по названию вакансии
-  const [selectedCity, setSelectedCity] = useState(''); // Для выбора города
+  const [value, setValue] = useState(''); 
+  const [selectedCity, setSelectedCity] = useState('');
 
-  // Уникальные города из базы данных
-  const cities = [...new Set(pizzas.map((job) => job.city))]; // Извлекаем уникальные города
+  
+  const cities = [...new Set(pizzas.map((job) => job.city))];
 
-  // Фильтрация вакансий по названию и городу
+
   const filteredJob = pizzas.filter((job) => {
     const matchesTitle = job.job_title.toLowerCase().includes(value.toLowerCase());
-    const matchesCity = selectedCity ? job.city === selectedCity : true; // Фильтрация по городу
+    const matchesCity = selectedCity ? job.city === selectedCity : true; 
     return matchesTitle && matchesCity;
   });
 
@@ -74,7 +74,6 @@ function Vacancies() {
                 {selectedCity ? selectedCity : 'Все города'}
               </button>
               <ul className='dropdown__list'>
-                {/* Опция "Все города" */}
                 <li className='dropdown__list-item' data-value=''>
                   Все города
                 </li>
@@ -104,7 +103,7 @@ function Vacancies() {
           />
         ))
       ) : (
-        <p className='none_vacancies'>Такой вакансии нет</p> // Сообщение, если ничего не найдено
+        <p className='none_vacancies'>Такой вакансии нет</p> 
       )}
     </div>
   );
