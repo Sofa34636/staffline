@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination'; // Если используете пагинацию
+import 'swiper/css/pagination'; 
 import { Autoplay } from 'swiper/modules';
 
 function Feedback() {
@@ -17,34 +17,33 @@ function Feedback() {
         speed={3000}
         breakpoints={{
           900: {
-            slidesPerView: 2, // Для больших экранов
-            loop: true, // Включение бесконечной прокрутки
+            slidesPerView: 2, 
+            loop: true, 
 
-            spaceBetween: 30, // Расстояние между слайдами
-            lazyLoading: true, // Ленивое (отложенное) загружаемое изображение
+            spaceBetween: 30, 
+            lazyLoading: true, 
             centeredSlides: true,
           },
           600: {
-            slidesPerView: 1.5, // Для средних экранов
-            loop: true, // Включение бесконечной прокрутки
+            slidesPerView: 1.5, 
+            loop: true, 
 
-            spaceBetween: 20, // Расстояние между слайдами
-            lazyLoading: true, // Ленивое (отложенное) загружаемое изображение
+            spaceBetween: 20, 
+            lazyLoading: true, 
             centeredSlides: true,
           },
           0: {
-            slidesPerView: 1.2, // Для мобильных экранов
-            loop: true, // Включение бесконечной прокрутки
+            slidesPerView: 1.2, 
+            loop: true, 
 
-            spaceBetween: 10, // Расстояние между слайдами
-            lazyLoading: true, // Ленивое (отложенное) загружаемое изображение
+            spaceBetween: 10,
+            lazyLoading: true, 
             centeredSlides: true,
           },
         }}
         modules={[Autoplay]}
       >
         <div class='swiper-wrapper'>
-          {/* Слайды с отзывами */}
           <SwiperSlide>
             <div className='text-slider__slide'>
               <div className='slider__text-name'>Имя 1</div>
