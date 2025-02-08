@@ -43,17 +43,17 @@ function Footer() {
         <div className='footer__contacts'>
           <ul className='footer__social'>
             <li className='footer__social-item'>
-              <a href='#' className='footer__social-link'>
+              <a href='https://t.me/staffline1' className='footer__social-link'>
                 <img src={icon_telegram} alt='' className='footer__social-img' />
               </a>
             </li>
             <li className='footer__social-item'>
-              <a href='#' className='footer__social-link'>
+              <a href='https://wa.me/79502875807' className='footer__social-link'>
                 <img src={icon_whatsapp} alt='' className='footer__social-img' />
               </a>
             </li>
             <li className='footer__social-item'>
-              <a href='#' className='footer__social-link'>
+              <a href='https://www.instagram.com/staffline_vl' className='footer__social-link'>
                 <img src={icon_instagram} alt='' className='footer__social-img' />
               </a>
             </li>

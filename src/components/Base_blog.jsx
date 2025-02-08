@@ -34,7 +34,7 @@ function Base_blog() {
             </div>
           </div>
           <div className='base_blog-money'>
-            <h4 className='base_blog_products-price'>5000 ₽</h4>
+            <h4 className='base_blog_products-price'>10.000 ₽</h4>
             <img src={iconPrice} className='base_blog-img' alt='' />
           </div>
         </div>

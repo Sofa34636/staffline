@@ -1,6 +1,7 @@
 html {
   box-sizing: border-box;
   height: 100%;
+  margin: 0;
 }
 *,
 *::after,
@@ -27,6 +28,7 @@ body {
   height: 100%;
   line-height: 1.2;
   background-color: #ffe8eb;
+  margin: 0;
 }
 a {
   text-decoration: none;
@@ -46,6 +48,11 @@ button {
   padding-left: 20px;
   padding-right: 20px;
   margin: 0 auto;
+}
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 .header__inner {
   font-family: 'Days one', sans-serif;
@@ -75,6 +82,9 @@ button {
   font-style: normal;
   margin-top: 12px;
 }
+.logo_text a {
+  color: #f7b1bb !important;
+}
 .header__logo {
   display: flex;
 }
@@ -84,6 +94,7 @@ button {
   width: 200px;
   height: 33px;
   backdrop-filter: blur(30px);
+  color: #000 !important;
   background: #fff;
   transition: background-color 0.5s ease 0s; /*Плавнй цветовой переход*/
 }
@@ -102,7 +113,6 @@ button {
 
   margin-top: 20px;
   display: flex;
-  flex-direction: row;
 }
 
 .section__top {
@@ -224,15 +234,19 @@ button {
 }
 .selection_blog_horizon-text {
   position: absolute;
-  writing-mode: vertical-rl; /* Поворот текста сверху вниз */
   text-orientation: upright; /* Оставляет буквы в стандартной ориентации */
-  margin: 11px 0 208px 281px;
+  margin: 11px 0 208px 290px !important;
   top: 0;
-
   text-align: center;
   color: #282828;
   cursor: pointer;
 }
+.selection_blog_horizon-text_2 {
+  display: flex;
+  flex-direction: column; /* Располагает буквы вертикально */
+  text-align: center; /* Центрирует текст */
+}
+
 .selection_blog-text {
   position: absolute;
   margin: 285px 0 0 11px;
@@ -716,18 +730,22 @@ textarea.form__input {
 .dropdown {
   font-weight: 400;
   font-size: 16px;
-
+  color: #000 !important;
   position: relative;
   font-weight: 400;
   font-size: 16px;
   margin-bottom: 40px;
+  z-index: 500;
+}
+.dropdown button {
+  color: #000 !important;
 }
 .dropdown__button {
   width: 100%;
   display: block;
   position: relative;
   text-align: left;
-
+  color: #000 !important;
   border: 1px solid #ff84b0;
   border-radius: 10px;
   background-color: #ffffff;
@@ -902,7 +920,7 @@ textarea.form__input {
 }
 .job__container {
   border-radius: 50px;
-  width: 1000px;
+  width: 900px;
   height: 200px;
   background: #fff;
   display: flex;
@@ -941,7 +959,7 @@ textarea.form__input {
   border: 1px solid #ff84b0;
   border-radius: 20px;
   background: #fff;
-  width: 459px;
+  max-width: 459px;
   height: 45px;
   display: flex;
   justify-content: space-between;
@@ -960,6 +978,7 @@ textarea.form__input {
 }
 .town {
   font-size: 16px;
+  color: #000 !important;
 }
 /* Стили для выпадающего списка */
 select {
@@ -989,13 +1008,47 @@ select:focus {
 .searct__img {
   width: 30px;
 }
+.vacancies_swiper {
+  margin-top: 100px;
+}
+
+.vacancies__item {
+  background-color: #f7b1bb;
+  padding: 5px 10px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+}
+/*vacancieImg*/
+
+.VacancieImg_grid {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Адаптивные столбцы */
+  gap: 16px; /* Отступы между изображениями */
+  justify-items: center; /* Центровка содержимого */
+}
+
+.vacancie_Img {
+  width: 100%; /* Изображение растягивается на всю ширину */
+  height: auto; /* Сохраняет пропорции */
+  max-width: 300px; /* Ограничение максимальной ширины */
+  border-radius: 8px; /* Дополнительно: скругленные углы */
+}
 
 /*footer*/
-
+.meny {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
 .footer {
   padding: 38px 95px 49px;
   background-color: #f7b1bb;
-
+  margin-top: auto;
   font-weight: 700;
   font-size: 20px;
   color: #000;
@@ -1036,7 +1089,9 @@ select:focus {
   .top__inner {
     margin-bottom: 40px;
   }
-
+  .top__inner {
+    justify-content: space-between;
+  }
   .slider_border {
     width: 483px;
     height: 300px;
@@ -1047,6 +1102,10 @@ select:focus {
   }
 
   /* Контейнер слайдера */
+  .top__list {
+    margin-left: -400px;
+  }
+
   .image-slider {
     width: 501px; /* Ширина слайдера */
     max-height: 303px;
@@ -1069,9 +1128,11 @@ select:focus {
     width: 355px;
     height: auto;
   }
+
   .top_navigation_3 img {
     width: 222px;
     height: auto;
+    margin-left: -400px;
   }
   .top_navigation_4 img {
     width: 150px;
@@ -1079,7 +1140,7 @@ select:focus {
   }
 
   .selection_blog_horizon-text {
-    margin: 11px 0 208px 230px;
+    margin: 11px 0 208px 230px !important;
     font-size: 20px;
   }
   .selection_blog-text {
@@ -1188,7 +1249,7 @@ select:focus {
     font-size: 14px;
   }
   .job__container {
-    width: 830px;
+    width: 760px;
     padding: 18px 34px;
   }
 
@@ -1223,7 +1284,9 @@ select:focus {
     margin: 0 auto;
     padding-right: 380px;
   }
-
+  .top_navigation_3 img {
+    margin-left: 0px;
+  }
   .section__top-slogan {
     max-width: 495px;
     font-size: 28px;
@@ -1330,7 +1393,7 @@ select:focus {
     height: 400px;
   }
   .job__container {
-    width: 400px;
+    width: 320px;
     height: 360px;
     flex-direction: column;
     gap: 10px;
@@ -1577,6 +1640,7 @@ select:focus {
   .dropdown {
     font-size: 14px;
     margin-bottom: 20px;
+    color: #000 !important;
   }
   .simple-rating {
     margin: 10px;
@@ -1592,8 +1656,8 @@ select:focus {
     padding-top: 2%;
   }
   .job__container {
-    width: 300px;
-    height: 360px;
+    width: 240px;
+    height: 340px;
     flex-direction: column;
     padding: 18px 34px;
     margin-left: 15px;
@@ -1703,7 +1767,8 @@ select:focus {
   }
 
   .selection_blog_horizon-text {
-    margin: 11px 0 208px 180px;
+    margin: 11px 0 208px 180px !important;
+
     font-size: 15px;
   }
   .selection_blog-text {

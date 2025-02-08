@@ -10,30 +10,36 @@ function Base_model() {
       <div className='container base_model__inner'>
         <div className='base__content_bloc'>
           <div className='position_oval'>
-            <div className='oval'>
-              <div className='base_model_circl-img'>
-                <img src={Base_men} alt='' className='' />
+            <a href='https://wa.me/79502875807' target='_blank' rel='noopener noreferrer'>
+              <div className='oval'>
+                <div className='base_model_circl-img'>
+                  <img src={Base_men} alt='' className='' />
+                </div>
+                <div className='base_model_oval-text'>Девушки и парни</div>
               </div>
-              <div className='base_model_oval-text'>Девушки и парни</div>
-            </div>
+            </a>
           </div>
 
           <div className='position_oval-right'>
-            <div className='oval-right'>
-              <div className='base_model_oval-text-right'>Любители и профессионалы</div>
-              <div className='base_model_circl-img-right'>
-                <img src={Base_wemen} alt='' className='' />
+            <a href='https://wa.me/79502875807' target='_blank' rel='noopener noreferrer'>
+              <div className='oval-right'>
+                <div className='base_model_oval-text-right'>Любители и профессионалы</div>
+                <div className='base_model_circl-img-right'>
+                  <img src={Base_wemen} alt='' className='' />
+                </div>
               </div>
-            </div>
+            </a>
           </div>
 
           <div className='position_oval'>
-            <div className='oval'>
-              <div className='base_model_circl-img'>
-                <img src={Base_men_2} alt='' className='' />
+            <a href='https://wa.me/79502875807' target='_blank' rel='noopener noreferrer'>
+              <div className='oval'>
+                <div className='base_model_circl-img'>
+                  <img src={Base_men_2} alt='' className='' />
+                </div>
+                <div className='base_model_oval-text'>Мы всегда в поиске новых лиц!</div>
               </div>
-              <div className='base_model_oval-text'>Мы всегда в поиске новых лиц!</div>
-            </div>
+            </a>
           </div>
         </div>
         <div className='tab__inner' id='selection'>

@@ -8,7 +8,7 @@ import Blok_1 from './Blok_1';
 
 function Top() {
   return (
-    <div className='meny'>
+    <div>
       <Blok_1 />
       <Services />
       <Base_model />

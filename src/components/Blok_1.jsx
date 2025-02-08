@@ -23,7 +23,7 @@ function Blok_1() {
               nextEl: '.swiper-button-next',
               prevEl: '.swiper-button-prev',
             }}
-            modules={[Navigation, Pagination]} // Добавлено для навигации и пагинации
+            modules={[Navigation, Pagination]}
             className='image-slider'
           >
             <SwiperSlide>
@@ -62,7 +62,14 @@ function Blok_1() {
             <div className='top_navigation_2'>
               <img src={selection_blog} alt='' className='top_navigation-link' />
               <div className='selection_blog_horizon-text'>
-                <a href='#selection'>ПОДБОР</a>
+                <a href='#selection ' className='selection_blog_horizon-text_2'>
+                  <span>П</span>
+                  <span>О</span>
+                  <span>Д</span>
+                  <span>Б</span>
+                  <span>О</span>
+                  <span>Р</span>
+                </a>
               </div>
               <div className='selection_blog-text'>
                 <a href='#selection'>БЛОГЕРЫ</a>

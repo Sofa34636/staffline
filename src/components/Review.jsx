@@ -7,14 +7,13 @@ function Review() {
     name: '',
     phone: '',
     message: '',
-    rating: '', // Добавлено для хранения выбранного рейтинга
+    rating: '',
   });
-  const [result, setResult] = useState(''); // Стейт для отображения результата
+  const [result, setResult] = useState('');
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    // Проверка на обязательные поля
     if (!formData.name.trim()) {
       alert('Пожалуйста, введите ваше имя');
       return;
@@ -24,7 +23,7 @@ function Review() {
       return;
     }
 
-    setResult('Пожалуйста, подождите...'); // Сообщение о процессе отправки
+    setResult('Пожалуйста, подождите...');
 
     // Отправка данных формы через fetch
     fetch('https://api.web3forms.com/submit', {
@@ -42,16 +41,16 @@ function Review() {
       .then(async (response) => {
         const json = await response.json();
         if (response.status === 200) {
-          setResult('Ваше сообщение успешно отправлено!'); // Успешное сообщение
+          setResult('Ваше сообщение успешно отправлено!');
         } else {
-          setResult('Произошла ошибка, попробуйте снова.'); // Сообщение об ошибке
+          setResult('Произошла ошибка, попробуйте снова.');
         }
       })
       .catch(() => {
         setResult('Что-то пошло не так! Пожалуйста, попробуйте снова.');
       })
       .finally(() => {
-        setTimeout(() => setResult(''), 5000); // Очистка сообщения через 5 секунд
+        setTimeout(() => setResult(''), 5000);
       });
   };
 
@@ -65,7 +64,7 @@ function Review() {
   const handleRatingChange = (e) => {
     setFormData({
       ...formData,
-      rating: e.target.value, // Устанавливаем выбранный рейтинг
+      rating: e.target.value,
     });
   };
 
@@ -149,7 +148,7 @@ function Review() {
                       SMM-ведение
                     </li>
                     <li className='dropdown__list-item' data-value='2'>
-                      Создание сайтов
+                      Маркетинговое сопровождение
                     </li>
                     <li className='dropdown__list-item' data-value='3'>
                       Подбор кадров
@@ -178,7 +177,7 @@ function Review() {
                     className='simple-rating__item'
                     name='simple-rating'
                     value='5'
-                    onChange={handleRatingChange} // Добавлен обработчик для рейтинга
+                    onChange={handleRatingChange}
                   />
                   <label htmlFor='simple-rating__5' className='simple-rating__lable'></label>
                   <input
