@@ -10,6 +10,7 @@ import arrow from '../imges/arrow.svg';
 import arrow_2 from '../imges/arrow_2.svg';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Link } from 'react-router-dom';
 
 function Blok_1() {
   return (
@@ -62,14 +63,14 @@ function Blok_1() {
             <div className='top_navigation_2'>
               <img src={selection_blog} alt='' className='top_navigation-link' />
               <div className='selection_blog_horizon-text'>
-                <a href='#selection ' className='selection_blog_horizon-text_2'>
+                <Link to='/Vacancie' className='selection_blog_horizon-text_2'>
                   <span>П</span>
                   <span>О</span>
                   <span>Д</span>
                   <span>Б</span>
                   <span>О</span>
                   <span>Р</span>
-                </a>
+                </Link>
               </div>
               <div className='selection_blog-text'>
                 <a href='#selection'>БЛОГЕРЫ</a>
@@ -87,13 +88,13 @@ function Blok_1() {
             <div className='top_navigation_4'>
               <img src={heard} alt='' className='top_navigation-link' />
             </div>
-            <a href='#service'>
+            <Link to='service'>
               <div className='service_button'>
                 ВСЕ УСЛУГИ
                 <img src={arrow} alt='' className='arrow' />
                 <img src={arrow_2} alt='' className='arrow_2' />
               </div>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

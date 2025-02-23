@@ -3,6 +3,7 @@ import logo from '../imges/logo.svg';
 import icon_whatsapp from '../imges/icon-whatsapp.svg';
 import icon_telegram from '../imges/icon-telegram.svg';
 import icon_instagram from '../imges/icon-instagram.svg';
+import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
@@ -16,6 +17,7 @@ function Footer() {
             <a href='/'>STAFFLINE</a>{' '}
           </div>
         </div>
+
         <nav className='menu footer__menu'>
           <ul className='meny__list'>
             <li className='menu__list-item'>
@@ -37,6 +39,9 @@ function Footer() {
               <a href='#review' className='menu__list-link'>
                 Отзывы
               </a>
+            </li>
+            <li className='menu__list-item'>
+              <Link to='/Vacancie'>Вакансии</Link>
             </li>
           </ul>
         </nav>

@@ -2,6 +2,7 @@ import React from 'react';
 
 function Work({
   job_title,
+  job__search,
   company_name,
   derectionz_dutie,
   city,
