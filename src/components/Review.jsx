@@ -24,8 +24,6 @@ function Review() {
     }
 
     setResult('Пожалуйста, подождите...');
-
-    // Отправка данных формы через fetch
     fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: {
@@ -61,6 +59,20 @@ function Review() {
     });
   };
 
+  const handleDropdownClick = (e) => {
+    e.preventDefault();
+    const dropdownList = e.target.nextElementSibling;
+    dropdownList.classList.toggle('dropdown__list--visible');
+  };
+
+  const handleItemClick = (e) => {
+    e.stopPropagation();
+    const dropdown = e.target.closest('.dropdown');
+    dropdown.querySelector('.dropdown__button').innerText = e.target.innerText;
+    setSelectedService(e.target.dataset.value);
+    dropdown.querySelector('.dropdown__list').classList.remove('dropdown__list--visible');
+  };
+
   const handleRatingChange = (e) => {
     setFormData({
       ...formData,
@@ -74,20 +86,11 @@ function Review() {
     const dropDownItems = document.querySelectorAll('.dropdown__list-item');
 
     dropDownBtns.forEach((btn) => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        btn.nextElementSibling.classList.toggle('dropdown__list--visible');
-      });
+      btn.addEventListener('click', handleDropdownClick);
     });
 
     dropDownItems.forEach((item) => {
-      item.addEventListener('click', function (e) {
-        e.stopPropagation();
-        const dropdown = item.closest('.dropdown');
-        dropdown.querySelector('.dropdown__button').innerText = this.innerText;
-        setSelectedService(this.dataset.value);
-        dropdown.querySelector('.dropdown__list').classList.remove('dropdown__list--visible');
-      });
+      item.addEventListener('click', handleItemClick);
     });
 
     document.addEventListener('click', (e) => {
@@ -97,8 +100,8 @@ function Review() {
     });
 
     return () => {
-      dropDownBtns.forEach((btn) => btn.removeEventListener('click', () => {}));
-      dropDownItems.forEach((item) => item.removeEventListener('click', () => {}));
+      dropDownBtns.forEach((btn) => btn.removeEventListener('click', handleDropdownClick));
+      dropDownItems.forEach((item) => item.removeEventListener('click', handleItemClick));
     };
   }, []);
 

@@ -54,7 +54,7 @@ function Application() {
           ease: 'power1.inOut',
           delay: 2,
         });
-    } else if (screenWidth > 0) {
+    } else if (screenWidth > 390) {
       timeline
         .to('.animation_bloc1', {
           x: 105, // Вправо
@@ -65,6 +65,28 @@ function Application() {
         })
         .to('.animation_bloc1', {
           x: -105, // Влево
+          duration: 2,
+          ease: 'power1.inOut',
+          delay: 2,
+        })
+        .to('.animation_bloc1', {
+          x: 0, // Восстановление по оси X
+          y: 0, // Вверх на 45
+          duration: 2,
+          ease: 'power1.inOut',
+          delay: 2,
+        });
+    } else if (screenWidth > 0) {
+      timeline
+        .to('.animation_bloc1', {
+          x: 90, // Вправо
+          y: 260, // Вниз
+          duration: 2,
+          ease: 'power1.inOut',
+          delay: 2,
+        })
+        .to('.animation_bloc1', {
+          x: -90, // Влево
           duration: 2,
           ease: 'power1.inOut',
           delay: 2,
@@ -126,7 +148,7 @@ function Application() {
           ease: 'power1.inOut',
           delay: 2,
         });
-    } else if (screenWidth > 0) {
+    } else if (screenWidth > 390) {
       timeline2
         .to('.animation_bloc2', {
           x: 105, // Вправо на 45px
@@ -137,6 +159,29 @@ function Application() {
         })
         .to('.animation_bloc2', {
           x: 210, // Вправо еще на 45px (диагональ)
+          y: 0, // Вниз на 45px (возвращается в линию)
+          duration: 2,
+          ease: 'power1.inOut',
+          delay: 2,
+        })
+        .to('.animation_bloc2', {
+          x: 0, // Возвращение в исходную точку по оси X
+          y: 0, // Возвращение в исходную точку по оси Y
+          duration: 2,
+          ease: 'power1.inOut',
+          delay: 2,
+        });
+    } else if (screenWidth > 0) {
+      timeline2
+        .to('.animation_bloc2', {
+          x: 90, // Вправо на 45px
+          y: -260, // Вверх на 45px
+          duration: 2,
+          ease: 'power1.inOut',
+          delay: 2,
+        })
+        .to('.animation_bloc2', {
+          x: 180, // Вправо еще на 45px (диагональ)
           y: 0, // Вниз на 45px (возвращается в линию)
           duration: 2,
           ease: 'power1.inOut',
@@ -197,7 +242,7 @@ function Application() {
           ease: 'power1.inOut',
           delay: 2,
         });
-    } else if (screenWidth > 0) {
+    } else if (screenWidth > 400) {
       timeline3
         .to('.animation_bloc3', {
           x: -210, // Вправо на 45px
@@ -220,6 +265,29 @@ function Application() {
           ease: 'power1.inOut',
           delay: 2,
         });
+    } else if (screenWidth > 0) {
+      timeline3
+        .to('.animation_bloc3', {
+          x: -180, // Вправо на 45px
+
+          duration: 2,
+          ease: 'power1.inOut',
+          delay: 2,
+        })
+        .to('.animation_bloc3', {
+          x: -90,
+          y: -260,
+          duration: 2,
+          ease: 'power1.inOut',
+          delay: 2,
+        })
+        .to('.animation_bloc3', {
+          x: 0,
+          y: 0,
+          duration: 2,
+          ease: 'power1.inOut',
+          delay: 2,
+        });
     }
   }, []);
 
@@ -231,7 +299,7 @@ function Application() {
             <img className='Application_img' src={stefi_4} alt='' />
             <div className='Application_bloc-item Application_bloc-item_1'>
               <div className='Application_bloc-text '>
-                При наличии более 5 актуальных вакансий стоимость закрытия одной — 13 500 ₽.
+                При наличии более 5 вакансий стоимость закрытия одной — 13 500 ₽."общепит"
               </div>
             </div>
           </div>
@@ -249,7 +317,7 @@ function Application() {
               <img className='Application_img' src={stefi_3} alt='' />
               <div className='Application_bloc-item'>
                 <div className='Application_bloc-text'>
-                  если более 5 актуальных вакансий - стоимость закрытия одной 13500{' '}
+                  От 3х актуальных вакансий - стоимость закрытия одной 15.000 ₽.
                 </div>
               </div>
             </div>

@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
+
 import 'swiper/css/pagination';
+
 import { Autoplay } from 'swiper/modules';
 
 function Feedback() {
@@ -38,6 +40,7 @@ function Feedback() {
 
             spaceBetween: 10,
             lazyLoading: true,
+
             centeredSlides: true,
           },
         }}

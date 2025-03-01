@@ -14,20 +14,21 @@ import Application from '../components/Application';
 function Vacancies() {
   const [jobSearch, setJobSearch] = useState('');
   const [citySearch, setCitySearch] = useState('');
-  const [textSearch, setTextSearch] = useState(''); // Поиск только по названию вакансии
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Извлекаем уникальные вакансии и города
   const jobTitles = [...new Set(pizzas.map((vacancy) => vacancy.job__search))];
   const cities = [...new Set(pizzas.map((vacancy) => vacancy.city))];
 
-  // Фильтрация вакансий
-  const filteredVacancies = pizzas.filter((obj) => {
-    const jobTitleMatch = obj.job__search.toLowerCase().includes(jobSearch.toLowerCase());
-    const cityMatch = obj.city.toLowerCase().includes(citySearch.toLowerCase());
-    const textMatch = obj.job_title.toLowerCase().includes(textSearch.toLowerCase()); // Фильтр только по job_title
-
-    return jobTitleMatch && cityMatch && textMatch;
-  });
+  // Фильтрация вакансий по всем фильтрам
+  const filteredVacancies = pizzas.filter(
+    (vacancy) =>
+      (vacancy.job__search.toLowerCase().includes(jobSearch.toLowerCase()) || jobSearch === '') &&
+      (vacancy.city.toLowerCase().includes(citySearch.toLowerCase()) || citySearch === '') &&
+      (vacancy.job__search.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        vacancy.city.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        searchQuery === ''),
+  );
 
   return (
     <div className=''>
@@ -57,10 +58,10 @@ function Vacancies() {
         <div className='search_form'>
           <input
             type='text'
-            placeholder='Поиск по названию'
+            placeholder='Поиск по вакансии или городу'
             className='search__input'
-            value={textSearch}
-            onChange={(e) => setTextSearch(e.target.value)}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
           <img src={glass} alt='Поиск' className='search-icon' />
         </div>
@@ -74,7 +75,7 @@ function Vacancies() {
             pagination={{ clickable: true }}
             spaceBetween={20}
             loop={true}
-            slidesPerView={1} // Измените на 2 или 3, если нужно несколько карточек
+            slidesPerView={1}
           >
             {filteredVacancies.map((obj) => (
               <SwiperSlide key={obj.id}>
@@ -97,7 +98,12 @@ function Vacancies() {
         <div className='vacancies__item'>
           Все актуальные вакансии
           <p>
-            <a href='https://wa.me/79502875807' className='footer__social-link'>
+            <a
+              href='https://wa.me/79502875807'
+              className='footer__social-link '
+              target='_blank'
+              rel='noopener noreferrer'
+            >
               <img src={icon_whatsapp} alt='' className='footer__social-img' />
             </a>
           </p>
@@ -108,11 +114,11 @@ function Vacancies() {
         <div className='tab__inner' id='selection'>
           <div className='tab__container_3'>
             <div className='top_tab-text'>
-              <span className='tab-text tab-text_color'>предложения</span>
+              <span className='tab-text tab-text_color'>Предложения</span>
               <div className='cut-off'></div>
-              <span className='tab-text tab-text_color_1'>предложения</span>
+              <span className='tab-text tab-text_color_1'>Предложения</span>
               <div className='cut-off'></div>
-              <span className='tab-text tab-text_color_2'>предложения</span>
+              <span className='tab-text tab-text_color_2'>Предложения</span>
             </div>
           </div>
         </div>
